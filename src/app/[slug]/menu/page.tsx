@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/prisma";
 
 import RestaurantCategories from "./components/categories";
+import Footer from "./components/footer";
 import RestaurantHeader from "./components/header";
 
 interface RestaurantMenuPageProps {
@@ -38,6 +39,8 @@ const RestaurantMenuPage = async ({
     <div>
       <RestaurantHeader restaurant={restaurant} />
       <RestaurantCategories restaurant={restaurant} />
+
+      <Footer />
     </div>
   );
 };
