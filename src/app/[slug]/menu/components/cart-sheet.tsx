@@ -19,12 +19,12 @@ const CartSheet = () => {
   const { isOpen, toggleCart, products, total } = useContext(CartContext);
   return (
     <Sheet open={isOpen} onOpenChange={toggleCart}>
-      <SheetContent className="w-[80%]">
+      <SheetContent className="z-50 w-[80%] px-3 sm:px-5 lg:min-w-[50%]">
         <SheetHeader>
-          <SheetTitle className="text-left">Sacola</SheetTitle>
+          <SheetTitle className="text-left lg:text-xl">Sacola</SheetTitle>
         </SheetHeader>
         <div className="flex h-full flex-col py-5">
-          <div className="flex-auto">
+          <div className="flex-auto space-y-3">
             {products.map((product) => (
               <CartProductItem key={product.id} product={product} />
             ))}
@@ -32,13 +32,17 @@ const CartSheet = () => {
           <Card className="mb-6">
             <CardContent className="p-5">
               <div className="flex justify-between">
-                <p className="text-sm text-muted-foreground">Total</p>
-                <p className="text-sm font-semibold">{formatCurrency(total)}</p>
+                <p className="text-sm text-muted-foreground lg:text-base">
+                  Total
+                </p>
+                <p className="text-sm font-semibold lg:text-base">
+                  {formatCurrency(total)}
+                </p>
               </div>
             </CardContent>
           </Card>
           <Button
-            className="w-full rounded-full"
+            className="w-full rounded-full lg:text-base"
             onClick={() => setFinishOrderDialogIsOpen(true)}
           >
             Finalizar pedido
@@ -48,9 +52,9 @@ const CartSheet = () => {
             onOpenChange={setFinishOrderDialogIsOpen}
           />
         </div>
-        </SheetContent>
+      </SheetContent>
     </Sheet>
-   );
-  };
-  
-  export default CartSheet;
+  );
+};
+
+export default CartSheet;

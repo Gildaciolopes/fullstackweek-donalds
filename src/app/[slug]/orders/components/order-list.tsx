@@ -47,7 +47,7 @@ const OrderList = ({ orders }: OrderListProps) => {
       <Button
         size="icon"
         variant="secondary"
-        className="rounded-full"
+        className="rounded-full bg-white"
         onClick={handleBackClick}
       >
         <ChevronLeftIcon />

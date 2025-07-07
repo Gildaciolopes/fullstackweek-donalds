@@ -17,25 +17,25 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
   const handleBackClick = () => router.back();
   const handleOrdersClick = () => router.push(`/${slug}/orders`);
   return (
-    <div className="relative h-[250px] w-full">
+    <div className="relative mx-auto h-[250px] max-w-[1200px] md:min-h-[420px] lg:min-h-[500px]">
       <Button
         variant="secondary"
         size="icon"
-        className="absolute left-4 top-4 z-50 rounded-full"
+        className="absolute left-4 top-4 z-50 rounded-full bg-white"
         onClick={handleBackClick}
       >
         <ChevronLeftIcon />
       </Button>
       <Image
-        src={restaurant.coverImageUrl}
+        src="/coverImgUrl.svg"
         alt={restaurant.name}
         fill
-        className="object-cover"
+        className="object-cover md:min-h-[420px] lg:min-h-[500px]"
       />
       <Button
         variant="secondary"
         size="icon"
-        className="absolute right-4 top-4 z-50 rounded-full"
+        className="absolute right-4 top-4 z-50 rounded-full bg-white"
         onClick={handleOrdersClick}
       >
         <ScrollTextIcon />

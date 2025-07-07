@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useContext, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { formatCurrency } from "@/helpers/format-currency";
 
 import CartSheet from "../../components/cart-sheet";
@@ -48,8 +47,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   };
   return (
     <>
-      <div className="relative z-50 mt-[-1.5rem] flex flex-auto flex-col overflow-hidden rounded-t-3xl p-5">
-        <div className="flex-auto overflow-hidden">
+      <div className="relative mx-auto mt-1 flex max-w-[900px] flex-auto flex-col rounded-t-3xl bg-white px-3 pb-3 lg:min-w-[900px]">
+        <div className="flex-auto rounded-t-xl px-2 pt-5">
           {/* RESTAURANTE */}
           <div className="flex items-center gap-1.5">
             <Image
@@ -91,35 +90,35 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             </div>
           </div>
 
-          <ScrollArea className="h-full">
-            {/* SOBRE */}
-            <div className="mt-6 space-y-3">
-              <h4 className="font-semibold">Sobre</h4>
-              <p className="text-sm text-muted-foreground">
-                {product.description}
-              </p>
-            </div>
+          {/* SOBRE */}
+          <div className="mt-6 space-y-3">
+            <h4 className="font-semibold">Sobre</h4>
+            <p className="text-sm text-muted-foreground">
+              {product.description}
+            </p>
+          </div>
 
-            {/* INGREDIENTS */}
-            <div className="mt-6 space-y-3">
-              <div className="5 flex items-center gap-1">
-                <ChefHatIcon size={18} />
-                <h4 className="font-semibold">Ingredientes</h4>
-              </div>
-              <ul className="text-muted-fo list-disc px-5 text-sm text-muted-foreground">
-                {product.ingredients.map((ingredient) => (
-                  <li key={ingredient}>{ingredient}</li>
-                ))}
-              </ul>
+          {/* INGREDIENTS */}
+          <div className="mt-6 space-y-3">
+            <div className="flex items-center gap-1">
+              <ChefHatIcon size={18} />
+              <h4 className="font-semibold">Ingredientes</h4>
             </div>
-          </ScrollArea>
+            <ul className="list-disc px-5 text-sm text-muted-foreground">
+              {product.ingredients.map((ingredient) => (
+                <li key={ingredient}>{ingredient}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-
-        <Button className="w-full rounded-full" onClick={handleAddToCart}>
+        <Button
+          className="mt-5 w-full rounded-full hover:cursor-pointer"
+          onClick={handleAddToCart}
+        >
           Adicionar à sacola
         </Button>
+        <CartSheet />
       </div>
-      <CartSheet />
     </>
   );
 };
